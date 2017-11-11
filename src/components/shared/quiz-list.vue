@@ -1,13 +1,16 @@
 <template>
-  <div>
-    <h2>Quizzes</h2>
+  <section>
+    <h2 class="title">Quizzes</h2>
 
-    <ul>
-      <li v-for="quiz in quizzes">
-        <QuizListElement :quiz="quiz"></QuizListElement>
-      </li>
-    </ul>
-  </div>
+    <section class="">
+      <QuizListElement
+        v-for="quiz in quizzes"
+        :key="quiz.id"
+        :quiz="quiz"
+        class="is-3 is-inline-block"
+      ></QuizListElement>
+    </section>
+  </section>
 </template>
 
 <script>
@@ -27,11 +30,4 @@
 </script>
 
 <style lang="scss" scoped>
-  div {
-    text-align: center;
-  }
-  ul li {
-    display: inline-block;
-    margin: 5px;
-  }
 </style>

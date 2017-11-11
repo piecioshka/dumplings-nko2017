@@ -1,6 +1,11 @@
 export default {
   name: 'TypeScript - level 1',
-  banner: 'http://localhost:8080/static/fakes/logo-typescript.png',
+  author: {
+    name: 'Piotr Kowalski',
+    email: 'piecioshka@gmail.com',
+    url: 'https://piecioshka.pl/'
+  },
+  banner: 'http://localhost:8080/static/images/quiz-banners/logo-typescript.png',
   category: 'TypeScript',
   questions: [
     {

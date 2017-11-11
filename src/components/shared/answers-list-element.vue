@@ -1,7 +1,21 @@
 <template>
-  <div>
-    <p>{{ answer.content }}</p>
-  </div>
+  <section class="box">
+    <article class="media">
+      <div class="media-left">
+        <figure class="image is-64x64">
+          <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
+        </figure>
+      </div>
+      <div class="media-content">
+        <div class="content">
+          <p>
+            {{ answer.content }}
+          </p>
+        </div>
+      </div>
+    </article>
+  </section>
+
 </template>
 
 <script>
@@ -14,14 +28,4 @@
 </script>
 
 <style lang="scss" scoped>
-  div {
-    border: 1px solid #2c3e50;
-    border-radius: 3px;
-    padding: 5px;
-  }
-
-  div:hover {
-    background: whitesmoke;
-    cursor: pointer;
-  }
 </style>

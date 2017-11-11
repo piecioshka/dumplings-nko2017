@@ -1,6 +1,11 @@
 export default {
   name: 'JavaScript - level 1',
-  banner: 'http://localhost:8080/static/fakes/logo-javascript.png',
+  author: {
+    name: 'Piotr Kowalski',
+    email: 'piecioshka@gmail.com',
+    url: 'https://piecioshka.pl/'
+  },
+  banner: 'http://localhost:8080/static/images/quiz-banners/logo-javascript.png',
   category: 'JavaScript',
   questions: [
     {

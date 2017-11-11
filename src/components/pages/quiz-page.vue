@@ -1,14 +1,15 @@
 <template>
-  <div>
-    <h2>{{ quiz.name }}</h2>
-    <small>Category: {{ quiz.category.name }}</small>
-    <hr/>
+  <div class="container">
+    <h1 class="title">{{ quiz.name }}</h1>
+    <h2 class="subtitle">Category: {{ quiz.category.name }}</h2>
+
     <img v-bind:src="quiz.banner" alt=""/>
 
     <div v-if="!isQuizCompleted">
       <h2>🔍 {{ currentQuestion.title }}</h2>
 
       <progress
+        class="progress is-primary"
         :value="currentQuestionIndex"
         :max="quiz.questions.length"
       ></progress>
@@ -20,7 +21,7 @@
     </div>
 
     <div v-else="isQuizCompleted">
-      <progress :value="1" :max="1"></progress>
+      <progress class="progress is-info" :value="1" :max="1"></progress>
 
       <p>Thanks!</p>
       <p>
@@ -101,5 +102,4 @@
 </script>
 
 <style lang="scss" scoped>
-
 </style>

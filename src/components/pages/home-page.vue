@@ -1,9 +1,9 @@
 <template>
-  <div>
-    <nav>
+  <div class="columns container">
+    <nav class="column is-one-fifth">
       <CategoryList :categories="categories"></CategoryList>
     </nav>
-    <main>
+    <main class="column">
       <QuizList :quizzes="quizzes"></QuizList>
     </main>
   </div>
@@ -44,11 +44,4 @@
 </script>
 
 <style lang="scss" scoped>
-  nav {
-    width: 150px;
-  }
-
-  main {
-    width: 700px;
-  }
 </style>

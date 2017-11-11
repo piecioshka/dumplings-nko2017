@@ -1,11 +1,11 @@
 <template>
-  <div>
+  <section>
     <ul>
-      <li v-for="answer in question.answers" @click="selectAnswer(answer)">
+      <li v-for="answer in question.answers" :key="answer.id" @click="selectAnswer(answer)">
         <AnswersListElement :answer="answer"></AnswersListElement>
       </li>
     </ul>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -28,14 +28,4 @@
 </script>
 
 <style lang="scss" scoped>
-  ul {
-    display: flex;
-    justify-content: space-between;
-    flex-flow: row wrap;
-
-    li {
-      width: 300px;
-      margin: 5px;
-    }
-  }
 </style>

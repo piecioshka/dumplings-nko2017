@@ -1,15 +1,15 @@
 <template>
-  <div>
-    <h2>Categories</h2>
+  <aside>
+    <p class="menu-label">Categories</p>
 
-    <ul>
-      <li v-for="category in categories">
+    <ul class="menu-list">
+      <li v-for="category in categories" :key="category.id">
         <router-link v-bind:to="'/category/' + category.id">
           {{ category.name }}
         </router-link>
       </li>
     </ul>
-  </div>
+  </aside>
 </template>
 
 <script>
@@ -26,5 +26,4 @@
 </script>
 
 <style lang="scss" scoped>
-
 </style>
