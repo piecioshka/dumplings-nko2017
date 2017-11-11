@@ -14,9 +14,11 @@
 
     <footer class="footer">
       <p class="has-text-centered">
-        Author <a href="http://piecioshka.pl">@piecioshka</a>
-        Project make for <a href="http://nodeknockout.com">Node Knockout</a>
-        Competition @ 2017
+        Project make with <i class="fa fa-heart" aria-hidden="true"></i>
+        by <a href="http://piecioshka.pl">@piecioshka</a>
+        for <a href="http://nodeknockout.com">Node Knockout Competition</a>
+        <br/>
+        Copyright @ 2017
       </p>
     </footer>
   </section>

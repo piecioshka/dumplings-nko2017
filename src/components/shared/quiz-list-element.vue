@@ -1,5 +1,5 @@
 <template>
-  <section class="card">
+  <section id="quiz-list-element" class="card">
     <div class="card-image">
       <figure class="image is-16by9">
         <router-link :to="'/quiz/' + quiz.id">
@@ -28,14 +28,17 @@
 
     <footer class="card-footer">
       <a
-        :href="getFacebookShareUrl()"
-        class="card-footer-item has-text-info">
-
-        <i class="fa fa-facebook-official" aria-hidden="true"></i>&nbsp;Share
+        :href="buildFacebookShareUrl()"
+        class="card-footer-item has-text-info"
+        target="_blank"
+      >
+        <i class="fa fa-facebook-square" aria-hidden="true"></i>
+        &nbsp;Share
       </a>
       <router-link
         :to="'/quiz/' + quiz.id"
-        class="card-footer-item has-text-danger">
+        class="card-footer-item has-text-danger"
+      >
         Start
       </router-link>
     </footer>
@@ -53,7 +56,7 @@
       'quiz'
     ],
     methods: {
-      getFacebookShareUrl() {
+      buildFacebookShareUrl() {
         return 'https://www.facebook.com/sharer/sharer.php?u=' + location.href + '/quiz/' + this.quiz.id;
       }
     }
@@ -61,7 +64,8 @@
 </script>
 
 <style lang="scss" scoped>
-  section {
+  #quiz-list-element {
     margin: 10px;
+    width: 270px;
   }
 </style>

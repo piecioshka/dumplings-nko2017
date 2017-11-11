@@ -1,34 +1,81 @@
 <template>
   <div class="container">
-    <h1 class="title">{{ quiz.name }}</h1>
-    <h2 class="subtitle">Category: {{ quiz.category.name }}</h2>
+    <div class="columns">
+      <div class="column">
+        <h1 class="title">{{ quiz.name }}</h1>
 
-    <img v-bind:src="quiz.banner" alt=""/>
+        <div class="tags has-addons level-left">
+          <span class="tag">Category</span>
+          <span class="tag is-info">{{ quiz.category.name }}</span>
+        </div>
 
-    <div v-if="!isQuizCompleted">
-      <h2>🔍 {{ currentQuestion.title }}</h2>
+        <img v-bind:src="quiz.banner" alt=""/>
+      </div>
 
-      <progress
-        class="progress is-primary"
-        :value="currentQuestionIndex"
-        :max="quiz.questions.length"
-      ></progress>
+      <div class="column is-two-thirds">
+        <article v-if="!isQuizCompleted" class="message">
+          <div class="message-header">
+            <p>
+              Question no.
+              {{ currentQuestionIndex + 1}} / {{ quiz.questions.length }}
+            </p>
+          </div>
 
-      <AnswersList
-        :question="currentQuestion"
-        v-on:selectAnswer="switchQuestion"
-      ></AnswersList>
-    </div>
+          <div class="message-body">
+            <h2 class="subtitle">
+              {{ currentQuestion.title }}
+            </h2>
 
-    <div v-else="isQuizCompleted">
-      <progress class="progress is-info" :value="1" :max="1"></progress>
+            <AnswersList
+              :question="currentQuestion"
+              v-on:selectAnswer="switchQuestion"
+            ></AnswersList>
+          </div>
+        </article>
 
-      <p>Thanks!</p>
-      <p>
-        Your score:
-        {{ getScore() }} / {{ getMaxScore() }}
-        ( {{ getScorePercent() }}% )
-      </p>
+        <article
+          v-else="isQuizCompleted"
+          :class="'message ' + getCompleteStatus()"
+        >
+          <div class="message-header">
+            <p>Completed</p>
+          </div>
+
+          <div class="message-body">
+            <h3 class="title">
+              Thanks! <i class="fa fa-check-circle" aria-hidden="true"></i>
+            </h3>
+
+            <div class="notification is-light">
+              <h2 class="subtitle">
+                Score:
+
+                <span class="has-text-weight-bold">
+                  {{ getScore() }} / {{ getMaxScore() }}
+                </span>
+
+                <span :class="'tag is-rounded ' + getCompleteStatus()">
+                  {{ getScorePercent() }}%
+                </span>
+              </h2>
+            </div>
+
+            <a
+              :href="buildTwitterShareUrl()"
+              :class="'button ' + getCompleteStatus()"
+              target="_blank"
+            >
+              <i class="fa fa-twitter-square" aria-hidden="true"></i>
+              &nbsp;Share my score
+            </a>
+
+            <router-link to="/" class="button is-dark is-outlined">
+              <i class="fa fa-undo" aria-hidden="true"></i>
+              &nbsp;Back to quizzes
+            </router-link>
+          </div>
+        </article>
+      </div>
     </div>
   </div>
 </template>
@@ -91,6 +138,22 @@
       },
       isNextQuestionAvailable() {
         return this.currentQuestionIndex + 1 < this.quiz.questions.length;
+      },
+      buildTwitterShareUrl() {
+        return 'https://twitter.com/home?status=I\'m reach ' + this.getScore() + '/' + this.getMaxScore() + ' in Milva quiz! 👍'
+      },
+      getCompleteStatus() {
+        const score = this.getScorePercent();
+        switch (true) {
+          case score > 70:
+            return 'is-success';
+          case score > 50:
+            return 'is-info';
+          case score > 0:
+            return 'is-warning';
+          case score === 0:
+            return 'is-danger';
+        }
       }
     },
     watch: {

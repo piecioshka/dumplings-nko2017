@@ -2,14 +2,11 @@
   <section>
     <h2 class="title">Quizzes</h2>
 
-    <section class="">
-      <QuizListElement
-        v-for="quiz in quizzes"
-        :key="quiz.id"
-        :quiz="quiz"
-        class="is-3 is-inline-block"
-      ></QuizListElement>
-    </section>
+    <ul>
+      <li v-for="quiz in quizzes" :key="quiz.id" class="is-inline-block">
+        <QuizListElement :quiz="quiz"></QuizListElement>
+      </li>
+    </ul>
   </section>
 </template>
 

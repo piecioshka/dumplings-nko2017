@@ -23,7 +23,7 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 ## TODO List
 
 * [x] Create HomePage
-  * [x] Display unique list of categories
+  * [x] Display unique list of categories (with "all" option)
   * [x] Display list of quizzes
   * [x] Filter list of quizzes after select category
   * [x] Create route for concrete category
@@ -36,5 +36,7 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
   * [x] Display quiz description on profile page
   * [x] Display single question (with answers)
   * [x] Switch question after choose answer
-  * [x] Display result (score) when user answers all questions
-  * [ ] Display answering progress for single quiz
+  * [x] Display answering progress for single quiz
+  * [x] When user answers all questions:
+    * [x] Display score
+    * [x] Display share button

@@ -3,6 +3,11 @@
     <p class="menu-label">Categories</p>
 
     <ul class="menu-list">
+      <li>
+        <router-link v-bind:to="'/'">
+          All
+        </router-link>
+      </li>
       <li v-for="category in categories" :key="category.id">
         <router-link v-bind:to="'/category/' + category.id">
           {{ category.name }}
