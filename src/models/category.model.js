@@ -3,6 +3,10 @@ import uuid from '../helper/uuid';
 const categories = {};
 
 export class CategoryModel {
+
+  /**
+   * @access private
+   */
   constructor(name) {
     this.id = uuid.v4();
     this.name = name;
@@ -13,4 +17,5 @@ export class CategoryModel {
       categories[category] = new CategoryModel(category);
     return categories[category];
   }
+
 }

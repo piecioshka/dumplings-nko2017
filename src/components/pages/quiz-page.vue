@@ -9,7 +9,7 @@
           <span class="tag is-info">{{ quiz.category.name }}</span>
         </div>
 
-        <img v-bind:src="quiz.banner" alt=""/>
+        <img v-bind:src="quiz.promo" alt=""/>
       </div>
 
       <div class="column is-two-thirds">

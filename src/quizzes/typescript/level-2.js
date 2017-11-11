@@ -1,15 +1,15 @@
 export default {
-  name: 'TypeScript - level 3',
+  name: 'TypeScript - level 2',
+  category: 'TypeScript',
+  promo: 'http://localhost:8080/static/images/quiz-banners/logo-typescript.png',
   author: {
     name: 'Piotr Kowalski',
     email: 'piecioshka@gmail.com',
     url: 'https://piecioshka.pl/'
   },
-  banner: 'http://localhost:8080/static/images/quiz-banners/logo-typescript.png',
-  category: 'TypeScript',
   questions: [
     {
-      title: "TypeScript: Lvl 3: Question 1",
+      title: "TypeScript: Lvl 2: Question 1",
       hints: [
         'second at first check variable type'
       ],
@@ -19,10 +19,10 @@ export default {
         "maybe",
         "I don't know"
       ],
-      correct: 0
+      correctAnswerIndex: 0
     },
     {
-      title: "TypeScript: Lvl 3: Question 2",
+      title: "TypeScript: Lvl 2: Question 2",
       hints: [
         'short version of second'
       ],
@@ -32,9 +32,9 @@ export default {
         "maybe",
         "I don't know"
       ],
-      correct: 0
+      correctAnswerIndex: 0
     }, {
-      title: "TypeScript: Lvl 3: Question 3",
+      title: "TypeScript: Lvl 2: Question 3",
       hints: [
         'first setup new context'
       ],
@@ -44,7 +44,7 @@ export default {
         "maybe",
         "I don't know"
       ],
-      correct: 0
+      correctAnswerIndex: 0
     }
   ]
 };

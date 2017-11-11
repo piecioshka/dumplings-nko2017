@@ -4,7 +4,6 @@ a {
 
 hr {
   border: 0;
-  height: 0.001em;
-  border-bottom: 1px solid lightslategray;
-  background: none;
+  height: 1px;
+  background: #aaa linear-gradient(to right, #ccc, #aaa, #ccc);
 }

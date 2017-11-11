@@ -1,20 +1,23 @@
 {
   "name": "milva",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A Vue.js project",
   "author": "Piotr Kowalski <piecioshka@gmail.com>",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "npm run dev",
-    "build": "node build/build.js"
+    "build": "node build/build.js",
+    "count": "find src -name '*.js' -not -path 'src/quizzes/*' -or -name '*.scss' -or -name '*.vue' | xargs wc -l | sort -r"
   },
   "dependencies": {
+    "is-my-json-valid": "^2.16.1",
     "node-sass": "^4.6.0",
     "sass-loader": "^6.0.6",
     "slug": "^0.9.1",
     "vue": "^2.5.2",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "debug": "latest"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

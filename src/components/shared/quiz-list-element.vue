@@ -3,7 +3,7 @@
     <div class="card-image">
       <figure class="image is-16by9">
         <router-link :to="'/quiz/' + quiz.id">
-          <img v-bind:src="quiz.banner" alt=""/>
+          <img v-bind:src="quiz.promo" alt=""/>
         </router-link>
       </figure>
     </div>

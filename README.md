@@ -22,7 +22,7 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 
 ## TODO List
 
-* [x] Create HomePage
+* [x] Create HomePage (v1)
   * [x] Filter list of quizzes after select category
   * [x] Menu with categories
     * [x] Display unique list of categories (with "all" option)
@@ -41,3 +41,18 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
   * [x] When user answers all questions:
     * [x] Display score
     * [x] Display share button
+* [x] Create AddQuizPage (v2)
+  * [x] Add button from HomePage
+  * [x] Create new route for page
+  * [x] Create form
+* [ ] Hints
+  * [ ] Display question hints (step by step) when they defined
+  * [ ] Add to AddQuizPage field where user can defined hints
+* [ ] User
+  * [ ] Sign in user with:
+    * [ ] Native `prompt`
+    * [ ] SSO with Facebook / Twitter / GitHub
+  * [ ] Create user panel with number of collected scores
+* [ ] WebSocket
+  * [ ] Display ranking of current logged users
+  * [ ] Display ranking of all registered users

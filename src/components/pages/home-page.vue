@@ -1,11 +1,20 @@
 <template>
-  <div class="columns container">
-    <nav class="column is-one-fifth">
-      <CategoryList :categories="categories"></CategoryList>
-    </nav>
-    <main class="column">
-      <QuizList :quizzes="quizzes"></QuizList>
-    </main>
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-fifth">
+        <router-link to="/new-quiz" class="button is-success">
+          <i class="fa fa-plus" aria-hidden="true"></i>
+          &nbsp;New Quiz
+        </router-link>
+
+        <hr/>
+
+        <CategoryList :categories="categories"></CategoryList>
+      </nav>
+      <main class="column">
+        <QuizList :quizzes="quizzes"></QuizList>
+      </main>
+    </div>
   </div>
 </template>
 
