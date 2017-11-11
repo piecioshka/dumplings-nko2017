@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>List of quizzes</h2>
+    <h2>Quizzes</h2>
 
     <ul>
       <li v-for="quiz in quizzes">
@@ -27,7 +27,7 @@
 </script>
 
 <style lang="scss" scoped>
-  h2 {
+  div {
     text-align: center;
   }
   ul li {

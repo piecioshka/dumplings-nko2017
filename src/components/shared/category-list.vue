@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>List of categories</h2>
+    <h2>Categories</h2>
 
     <ul>
       <li v-for="category in categories">

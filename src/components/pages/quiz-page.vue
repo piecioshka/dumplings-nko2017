@@ -8,6 +8,11 @@
     <div v-if="!isQuizCompleted">
       <h2>🔍 {{ currentQuestion.title }}</h2>
 
+      <progress
+        :value="currentQuestionIndex"
+        :max="quiz.questions.length"
+      ></progress>
+
       <AnswersList
         :question="currentQuestion"
         v-on:selectAnswer="switchQuestion"
@@ -15,6 +20,8 @@
     </div>
 
     <div v-else="isQuizCompleted">
+      <progress :value="1" :max="1"></progress>
+
       <p>Thanks!</p>
       <p>
         Your score:

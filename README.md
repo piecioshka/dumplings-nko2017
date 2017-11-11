@@ -37,3 +37,4 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
   * [x] Display single question (with answers)
   * [x] Switch question after choose answer
   * [x] Display result (score) when user answers all questions
+  * [ ] Display answering progress for single quiz
