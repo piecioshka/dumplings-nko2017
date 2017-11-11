@@ -23,12 +23,13 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 ## TODO List
 
 * [x] Create HomePage
-  * [x] Display unique list of categories (with "all" option)
-  * [x] Display list of quizzes
   * [x] Filter list of quizzes after select category
-  * [x] Create route for concrete category
-  * [x] Display whole list of quizzes when category is not selected
-  * [x] Create route for concrete quiz
+  * [x] Menu with categories
+    * [x] Display unique list of categories (with "all" option)
+    * [x] Create route for concrete category
+  * [x] Display list of quizzes
+    * [x] Display whole list of quizzes (when category is not selected)
+    * [x] Create route for concrete quiz
 * [x] Create QuizPage
   * [x] Get quizId from URL
   * [x] Get quizModel by quizId
