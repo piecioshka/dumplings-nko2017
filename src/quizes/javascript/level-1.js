@@ -1,6 +1,6 @@
 export default {
   name: 'JavaScript - level 1',
-  banner: 'http://localhost:8080/assets/fakes/carbon.png',
+  banner: 'http://localhost:8080/static/fakes/logo-javascript.png',
   category: 'JavaScript',
   questions: [
     {

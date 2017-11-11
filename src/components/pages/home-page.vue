@@ -32,23 +32,24 @@
         console.log(selectedCategory);
 
         if (!selectedCategory) {
+          this.quizzes = importer.quizzes;
           return;
         }
 
-        this.categories = this.categories.filter((category) => {
-          return category.id === selectedCategory;
+        this.quizzes = importer.quizzes.filter((quiz) => {
+          return quiz.category.id === selectedCategory;
         })
       }
     }
   }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
   nav {
     width: 150px;
   }
 
   main {
-    width: 300px;
+    width: 700px;
   }
 </style>

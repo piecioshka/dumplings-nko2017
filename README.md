@@ -19,3 +19,21 @@ npm run build --report
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+## TODO List
+
+* [x] Create HomePage
+  * [x] Display unique list of categories
+  * [x] Display list of quizzes
+  * [x] Filter list of quizzes after select category
+  * [x] Create route for concrete category
+  * [x] Display whole list of quizzes when category is not selected
+  * [x] Create route for concrete quiz
+* [x] Create QuizPage
+  * [x] Get quizId from URL
+  * [x] Get quizModel by quizId
+  * [x] Redirect to HomePage when quizModel is not found
+  * [x] Display quiz description on profile page
+  * [x] Display single question (with answers)
+  * [ ] Switch question after choose answer
+  * [ ] Display result when collect all answers

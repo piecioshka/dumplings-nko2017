@@ -1,6 +1,6 @@
 export default {
-  name: 'TypeScript - level 1',
-  banner: 'http://localhost:8080/assets/fakes/carbon.png',
+  name: 'TypeScript - level 2',
+  banner: 'http://localhost:8080/static/fakes/logo-typescript.png',
   category: 'TypeScript',
   questions: [
     {

@@ -30,4 +30,8 @@
   h2 {
     text-align: center;
   }
+  ul li {
+    display: inline-block;
+    margin: 5px;
+  }
 </style>

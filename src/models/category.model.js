@@ -4,12 +4,8 @@ const categories = {};
 
 export class CategoryModel {
   constructor(name) {
+    this.id = uuid.v4();
     this.name = name;
-    this._id = uuid.v4();
-  }
-
-  get id() {
-    return this._id;
   }
 
   static create(category) {
