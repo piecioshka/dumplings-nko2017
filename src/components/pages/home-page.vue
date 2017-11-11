@@ -29,7 +29,6 @@
     watch: {
       '$route'(to, from) {
         const selectedCategory = this.$route.params.categoryId;
-        console.log(selectedCategory);
 
         if (!selectedCategory) {
           this.quizzes = importer.quizzes;

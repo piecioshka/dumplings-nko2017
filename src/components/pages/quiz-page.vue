@@ -5,10 +5,22 @@
     <hr/>
     <img v-bind:src="quiz.banner" alt=""/>
 
-    <div>
+    <div v-if="!isQuizCompleted">
       <h2>🔍 {{ currentQuestion.title }}</h2>
 
-      <AnswersList :question="currentQuestion"></AnswersList>
+      <AnswersList
+        :question="currentQuestion"
+        v-on:selectAnswer="switchQuestion"
+      ></AnswersList>
+    </div>
+
+    <div v-else="isQuizCompleted">
+      <p>Thanks!</p>
+      <p>
+        Your score:
+        {{ getScore() }} / {{ getMaxScore() }}
+        ( {{ getScorePercent() }}% )
+      </p>
     </div>
   </div>
 </template>
@@ -29,7 +41,8 @@
         currentQuestionIndex: 0,
         get currentQuestion() {
           return this.quiz.questions[this.currentQuestionIndex];
-        }
+        },
+        isQuizCompleted: false
       }
     },
     methods: {
@@ -46,6 +59,30 @@
         }
 
         return quiz;
+      },
+      switchQuestion(userAnswer) {
+        this.currentQuestion.userAnswerId = userAnswer.id;
+
+        if (this.isNextQuestionAvailable()) {
+          this.currentQuestionIndex++;
+        } else {
+          this.isQuizCompleted = true;
+        }
+      },
+      getScore() {
+        return this.quiz.questions.reduce((currentScore, question) => {
+          const isAnswerCorrected = (question.userAnswerId === question.correctAnswerId);
+          return currentScore + (isAnswerCorrected ? 1 : 0);
+        }, 0);
+      },
+      getMaxScore() {
+        return this.quiz.questions.length;
+      },
+      getScorePercent() {
+        return Math.round(this.getScore() / this.getMaxScore() * 100);
+      },
+      isNextQuestionAvailable() {
+        return this.currentQuestionIndex + 1 < this.quiz.questions.length;
       }
     },
     watch: {

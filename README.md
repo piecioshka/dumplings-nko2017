@@ -35,5 +35,5 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
   * [x] Redirect to HomePage when quizModel is not found
   * [x] Display quiz description on profile page
   * [x] Display single question (with answers)
-  * [ ] Switch question after choose answer
-  * [ ] Display result when collect all answers
+  * [x] Switch question after choose answer
+  * [x] Display result (score) when user answers all questions

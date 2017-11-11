@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul>
-      <li v-for="answer in question.answers">
+      <li v-for="answer in question.answers" @click="selectAnswer(answer)">
         <AnswersListElement :answer="answer"></AnswersListElement>
       </li>
     </ul>
@@ -18,16 +18,16 @@
     ],
     components: {
       AnswersListElement
+    },
+    methods: {
+      selectAnswer(a) {
+        this.$emit('selectAnswer', a)
+      }
     }
   }
 </script>
 
 <style lang="scss" scoped>
-  div {
-    border: 1px solid #2c3e50;
-    border-radius: 3px;
-  }
-
   ul {
     display: flex;
     justify-content: space-between;

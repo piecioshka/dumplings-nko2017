@@ -19,4 +19,9 @@
     border-radius: 3px;
     padding: 5px;
   }
+
+  div:hover {
+    background: whitesmoke;
+    cursor: pointer;
+  }
 </style>
