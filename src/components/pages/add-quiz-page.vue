@@ -90,6 +90,7 @@
                     type="text"
                     v-model="newCategory"
                     placeholder="Category name"
+                    @keyup.enter="saveCategory()"
                   />
                 </p>
               </div>
@@ -246,10 +247,10 @@
         </h2>
 
         <div class="menu" v-if="questions.length">
-          <ul class="menu-list">
+          <ul class="menu-list" id="question-list">
             <li v-for="question in questions">
               <a @click="removeQuestion(question)">
-                {{ question.title }}
+                <p class="subtitle" v-html="question.title"></p>
                 <span class="has-text-weight-bold">
                   (with {{ question.answers.length }} answers)
                 </span>
@@ -281,7 +282,7 @@
                 <p class="control">
                   <textarea
                     class="textarea"
-                    v-model="currentQuestion"
+                    v-model="newQuestionTitle"
                     placeholder="Textarea"
                   ></textarea>
                 </p>
@@ -327,7 +328,7 @@
                   <p class="control">
                   <textarea
                     class="textarea"
-                    v-model="currentAnswer"
+                    v-model="newAnswer"
                     placeholder="Textarea"
                   ></textarea>
                   </p>
@@ -391,9 +392,16 @@
   import router from '../../router/index';
   import QUIZ_SCHEME from '../../schemas/quiz';
   import FORMATS from '../../schemas/formats';
+  import marked from 'marked';
 
   const imjv = require('is-my-json-valid');
   const validateQuiz = imjv(QUIZ_SCHEME, FORMATS);
+
+  marked.setOptions({
+    highlight: function (code) {
+      return require('highlight.js').highlightAuto(code).value;
+    }
+  });
 
   export default {
     name: 'AddQuizPage',
@@ -416,9 +424,9 @@
         },
 
         questions: [],
-        currentQuestion: null,
+        newQuestionTitle: null,
         answers: [],
-        currentAnswer: null,
+        newAnswer: null,
         quiz: {
           name: null,
           category: '',
@@ -472,7 +480,7 @@
       },
       saveQuestion() {
         const question = {
-          title: this.currentQuestion,
+          title: marked(this.newQuestionTitle),
           answers: this.answers.slice(),
           hints: [],
           correctAnswerIndex: 0
@@ -483,13 +491,13 @@
         }
 
         this.undoAddQuestion();
-        this.currentQuestion = null;
+        this.newQuestionTitle = null;
         this.answers.length = 0;
       },
-      removeQuestion(currentQuestion) {
+      removeQuestion(question) {
         const index = this.questions
           .map(q => q.title)
-          .indexOf(currentQuestion.title);
+          .indexOf(question.title);
         this.questions.splice(index, 1);
       },
 
@@ -500,15 +508,15 @@
         this.isTryAddNewAnswer = false;
       },
       saveAnswer() {
-        if (!this.answers.includes(this.currentAnswer)) {
-          this.answers.push(this.currentAnswer);
+        if (!this.answers.includes(this.newAnswer)) {
+          this.answers.push(this.newAnswer);
         }
 
         this.undoAddAnswer();
-        this.currentAnswer = null;
+        this.newAnswer = null;
       },
-      removeAnswer(currentAnswer) {
-        const index = this.answers.indexOf(currentAnswer);
+      removeAnswer(answer) {
+        const index = this.answers.indexOf(answer);
         this.answers.splice(index, 1);
       },
 
@@ -545,4 +553,8 @@
 </script>
 
 <style lang="scss" scoped>
+  #question-list {
+    list-style: decimal;
+    padding: 0 0 0 20px;
+  }
 </style>
