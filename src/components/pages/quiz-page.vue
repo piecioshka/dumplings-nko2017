@@ -150,7 +150,12 @@
         return this.currentQuestionIndex + 1 < this.quiz.questions.length;
       },
       buildTwitterShareUrl() {
-        return 'https://twitter.com/home?status=I\'m reach ' + this.getScore() + '/' + this.getMaxScore() + ' in Milva quiz! 👍'
+        const message = 'I\'m reach '
+          + this.getScorePercent()
+          + '% in "' + this.quiz.name + '" quiz'
+          + ' on #Milva! 👍 🚀';
+
+        return 'https://twitter.com/home?status=' + encodeURIComponent(message);
       },
       getCompleteStatus() {
         const score = this.getScorePercent();
