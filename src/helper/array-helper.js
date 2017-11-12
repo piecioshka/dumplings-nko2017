@@ -1,7 +1,14 @@
-export function uniqueElements(list) {
+export function uniqueElements(list, testFunction) {
   return list.reduce((list, item) => {
-    if (!list.includes(item))
+
+    const is = list.some((element) => {
+      return testFunction(element) === testFunction(item);
+    });
+
+    if (!is) {
       list.push(item);
+    }
+
     return list;
   }, [])
 }

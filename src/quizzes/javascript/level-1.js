@@ -1,6 +1,6 @@
 export default {
   name: 'JavaScript - level 1',
-  category: 'JavaScript',
+  categoryName: 'JavaScript',
   promo: '/static/images/quiz-banners/logo-javascript.png',
   author: {
     name: 'Piotr Kowalski',

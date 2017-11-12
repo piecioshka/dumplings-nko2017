@@ -8,7 +8,7 @@ export default {
       type: 'string',
       format: 'not-empty'
     },
-    category: {
+    categoryName: {
       require: true,
       type: 'string',
       format: 'not-empty'

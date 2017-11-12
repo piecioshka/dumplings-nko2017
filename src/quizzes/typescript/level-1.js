@@ -1,6 +1,6 @@
 export default {
   name: 'TypeScript - level 1',
-  category: 'TypeScript',
+  categoryName: 'TypeScript',
   promo: '/static/images/quiz-banners/logo-typescript.png',
   author: {
     name: 'Piotr Kowalski',

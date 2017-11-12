@@ -45,7 +45,6 @@
     },
     methods: {
       login() {
-        console.log('login', this.username);
         this.$store.dispatch('login', { name: this.username })
           .then(() => {
             this.$router.push({ path: '/profile' });

@@ -33,6 +33,9 @@
     name: 'App',
     components: {
       UserPanel
+    },
+    mounted() {
+      this.$store.dispatch('loadLocalQuizzes');
     }
   }
 </script>

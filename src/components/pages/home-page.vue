@@ -12,7 +12,7 @@
         <CategoryList :categories="categories"></CategoryList>
       </nav>
       <main class="column">
-        <QuizList :quizzes="quizzes"></QuizList>
+        <QuizList :quizzes="quizzesToDisplay"></QuizList>
       </main>
     </div>
   </div>
@@ -21,7 +21,6 @@
 <script>
   import CategoryList from '../shared/category-list.vue';
   import QuizList from '../shared/quiz-list.vue';
-  import importer from '../../services/importer';
 
   export default {
     name: 'HomePage',
@@ -29,24 +28,51 @@
       CategoryList,
       QuizList
     },
-    data() {
-      return {
-        categories: importer.categories,
-        quizzes: importer.quizzes
+    computed: {
+      categories() {
+        return this.$store.getters.categories;
+      },
+      quizzes() {
+        return this.$store.getters.quizzes;
+      },
+      quizzesToDisplay() {
+        return this.$store.getters.quizzesToDisplay;
+      }
+    },
+    methods: {
+      isCategoryExists(categoryId) {
+        return this.$store.getters.categories.some((category) => {
+          return category.id === categoryId;
+        })
       }
     },
     watch: {
       '$route'(to, from) {
         const selectedCategory = this.$route.params.categoryId;
+        let quizzesToDisplay = null;
 
         if (!selectedCategory) {
-          this.quizzes = importer.quizzes;
-          return;
+          quizzesToDisplay = this.$store.getters.quizzes;
+        } else {
+          quizzesToDisplay = this.$store.getters.quizzes.filter((quiz) => {
+            return quiz.category.id === selectedCategory;
+          })
         }
 
-        this.quizzes = importer.quizzes.filter((quiz) => {
-          return quiz.category.id === selectedCategory;
-        })
+        this.$store.dispatch('updateQuizzesToDisplay', quizzesToDisplay);
+      }
+    },
+    mounted() {
+      const selectedCategoryId = this.$route.params.categoryId;
+
+      if (typeof selectedCategoryId !== 'string') {
+        this.$store.dispatch('updateQuizzesToDisplay', this.$store.getters.quizzes);
+        return;
+      }
+
+      if (!this.isCategoryExists(selectedCategoryId)) {
+        console.warn(`Category ${selectedCategoryId} is not exist`);
+        this.$router.push({ path: '/' });
       }
     }
   }

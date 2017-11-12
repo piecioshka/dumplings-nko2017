@@ -1,5 +1,5 @@
 export default {
   formats: {
-    'not-empty': /^(.+)$/
+    'not-empty': /([^\s]*)/
   }
 }

@@ -37,7 +37,7 @@
 
         <li
           v-if="user"
-          @click="logout"
+          @click="logout()"
         >
           <a>
             <i class="fa fa-user" aria-hidden="true"></i>

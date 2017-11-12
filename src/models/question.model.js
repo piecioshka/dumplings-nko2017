@@ -1,5 +1,4 @@
 import uuid from '../helper/uuid';
-import {AnswerModel} from './answer.model';
 import marked from 'marked';
 
 marked.setOptions({
@@ -14,7 +13,7 @@ export class QuestionModel {
     this.id = uuid.v4();
     this.title = marked(title);
     this.hints = hints;
-    this.answers = answers.map(a => new AnswerModel(a));
+    this.answers = answers;
     this.correctAnswerId = this.answers[correctAnswerIndex].id;
   }
 

@@ -36,13 +36,14 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 * [x] Create HomePage (v1)
   * [x] Defined some files with mocks quiz questions and answers
   * [x] Convert questions from Markdown to HTML
-  * [x] Highlight code
   * [x] Filter list of quizzes after select category
+  * [x] Redirect to HomePage when category is exists (incorrect categoryId in URL) 
   * [x] Menu with categories
     * [x] Display unique list of categories (with "all" option)
     * [x] Create route for concrete category
   * [x] Display list of quizzes
     * [x] Display whole list of quizzes (when category is not selected)
+    * [x] Display message when list is empty
     * [x] Create route for concrete quiz
 * [x] Create QuizPage
   * [x] Get quizId from URL
@@ -50,6 +51,7 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
   * [x] Redirect to HomePage when quizModel is not found
   * [x] Display quiz description on profile page
   * [x] Display single question (with answers)
+  * [x] Highlight code inside question
   * [x] Switch question after choose answer
   * [x] Display answering progress for single quiz
   * [x] When user answers all questions:

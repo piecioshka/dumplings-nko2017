@@ -89,7 +89,6 @@
 </template>
 
 <script>
-  import importer from '../../services/importer';
   import AnswersList from '../../components/shared/answers-list.vue';
 
   export default {
@@ -113,7 +112,7 @@
       getQuizById() {
         const selectedQuiz = this.$route.params.quizId;
 
-        const quiz = importer.quizzes.find((quiz) => {
+        const quiz = this.$store.getters.quizzes.find((quiz) => {
           return quiz.id === selectedQuiz;
         });
 

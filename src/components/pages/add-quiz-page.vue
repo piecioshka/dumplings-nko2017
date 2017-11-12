@@ -47,7 +47,7 @@
         <section v-if="!isTryAddNewCategory">
           <div class="control">
             <div class="select is-pulled-left">
-              <select v-model="quiz.category" title="">
+              <select v-model="quiz.categoryName" title="">
                 <option selected value="">---</option>
                 <option
                   v-for="category in categories"
@@ -88,7 +88,7 @@
                   <input
                     class="input"
                     type="text"
-                    v-model="newCategory"
+                    v-model="newCategoryName"
                     placeholder="Category name"
                   />
                 </p>
@@ -295,12 +295,17 @@
           </h2>
 
           <div class="menu" v-if="answers.length">
-            <ul class="menu-list">
+            <ul class="menu-list" id="answer-list">
               <li v-for="answer in answers">
-                <a @click="removeAnswer(answer)">
-                  {{ answer }}
-                  <i class="delete"></i>
-                </a>
+                <span v-html="toMarkdown(answer)"></span>
+
+                <span
+                  class="tag is-danger remove-answer"
+                  @click="removeAnswer(answer)"
+                >
+                  <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                  &nbsp;Remove
+                </span>
               </li>
             </ul>
 
@@ -404,10 +409,15 @@
 </template>
 
 <script>
-  import importer from '../../services/importer';
   import QUIZ_SCHEME from '../../schemas/quiz';
   import FORMATS from '../../schemas/formats';
   import marked from 'marked';
+
+  marked.setOptions({
+    highlight: function (code) {
+      return require('highlight.js').highlightAuto(code).value;
+    }
+  });
 
   const imjv = require('is-my-json-valid');
   const validateQuiz = imjv(QUIZ_SCHEME, FORMATS);
@@ -416,26 +426,17 @@
     log: require('debug')('milva:add-quiz-page:log')
   };
 
-  marked.setOptions({
-    highlight: function (code) {
-      return require('highlight.js').highlightAuto(code).value;
-    }
-  });
-
   export default {
     name: 'AddQuizPage',
     components: {},
     data() {
       return {
-        categories: importer.categories,
-        authors: importer.authors,
-
         isTryAddNewCategory: false,
         isTryAddNewAuthor: false,
         isTryAddNewQuestion: false,
         isTryAddNewAnswer: false,
 
-        newCategory: null,
+        newCategoryName: null,
         newAuthor: {
           name: null,
           email: null,
@@ -448,7 +449,7 @@
         newAnswer: null,
         quiz: {
           name: null,
-          category: '',
+          categoryName: '',
           promo: null,
           author: {
             name: '',
@@ -460,6 +461,14 @@
         errors: []
       }
     },
+    computed: {
+      categories() {
+        return this.$store.getters.categories;
+      },
+      authors() {
+        return this.$store.getters.authors;
+      }
+    },
     methods: {
       addCategory() {
         console.log('addCategory');
@@ -468,12 +477,11 @@
       undoAddCategory() {
         console.log('undoAddCategory');
         this.isTryAddNewCategory = false;
-        this.newCategory = null;
+        this.newCategoryName = null;
       },
       saveCategory() {
         console.log('saveCategory');
-        importer.addCategory(this.newCategory);
-        this.categories = importer.categories;
+        this.$store.dispatch('addCategory', this.newCategoryName);
         this.undoAddCategory();
       },
 
@@ -492,8 +500,7 @@
       },
       saveAuthor() {
         console.log('saveAuthor');
-        importer.addAuthor(this.newAuthor);
-        this.authors = importer.authors;
+        this.$store.dispatch('addAuthor', this.newAuthor);
         this.undoAddAuthor();
       },
 
@@ -576,7 +583,11 @@
         });
 
         if (authorModel) {
-          this.quiz.author = authorModel.toJSON();
+          this.quiz.author = {
+            name: authorModel.name,
+            url: authorModel.url,
+            email: authorModel.email
+          };
         }
 
         this.quiz.questions = this.questions.slice();
@@ -590,21 +601,36 @@
 
         this.errors = [];
 
-        importer.addQuiz(this.quiz);
+        this.$store.dispatch('addQuiz', this.quiz);
         this.$router.push({ path: '/' });
       },
 
       cancel() {
         console.log('cancel');
         this.$router.back();
+      },
+
+      toMarkdown(string) {
+        return marked(string);
       }
     }
   }
 </script>
 
 <style lang="scss" scoped>
+  #answer-list,
   #question-list {
     list-style: decimal;
     padding: 0 0 0 20px;
+  }
+
+  #answer-list li,
+  #question-list li {
+    margin: 10px 0;
+  }
+
+  .remove-answer {
+    margin: 5px 0 0 0;
+    cursor: pointer;
   }
 </style>

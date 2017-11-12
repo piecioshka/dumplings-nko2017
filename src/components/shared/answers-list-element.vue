@@ -3,9 +3,7 @@
     <article class="media">
       <div class="media-content">
         <div class="content">
-          <p>
-            {{ answer.content }}
-          </p>
+          <p v-html="getAnswerContent()"></p>
         </div>
       </div>
     </article>
@@ -14,11 +12,24 @@
 </template>
 
 <script>
+  import marked from 'marked';
+
+  marked.setOptions({
+    highlight: function (code) {
+      return require('highlight.js').highlightAuto(code).value;
+    }
+  });
+
   export default {
     name: 'AnswersListElement',
     props: [
       'answer'
-    ]
+    ],
+    methods: {
+      getAnswerContent() {
+        return marked(this.answer.content)
+      }
+    }
   }
 </script>
 
