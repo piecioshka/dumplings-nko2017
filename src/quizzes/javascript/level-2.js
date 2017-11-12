@@ -9,30 +9,97 @@ export default {
   },
   questions: [
     {
-      title: "JavaScript: Lvl 2: Question 1",
-      hints: [
-        'second at first check variable type'
-      ],
+      title: "Jaki będzie wynik wyrażenia:\n" +
+      "    ```javascript\n" +
+      "    for (var i = 0; i < 5; i++) {\n" +
+      "        if (i === 0) {\n" +
+      "            setTimeout(function () {\n" +
+      "                console.log(i); // ???\n" +
+      "            }, 1000);\n" +
+      "        }\n" +
+      "    }\n" +
+      "    ```\n",
+      hints: [],
       answers: [
-        "yes",
-        "no",
-        "maybe",
-        "I don't know"
+        "5",
+        "4",
+        "0",
+        "1"
       ],
       correctAnswerIndex: 0
     },
     {
-      title: "JavaScript: Lvl 2: Question 2",
-      hints: [
-        'short version of second'
-      ],
+      title: "Do czego służy `document.createDocumentFragment()`?",
+      hints: [],
       answers: [
-        "yes",
-        "no",
-        "maybe",
-        "I don't know"
+        "do tworzenia nowego dokumentu",
+        "do tworzenia nowego fikcyjnego kontenera, który nie ma zdefiniowanego znacznika",
+        "do tworzenia referencji do ostatniego utworzonego kontenera"
       ],
-      correctAnswerIndex: 0
-    }
+      correctAnswerIndex: 1
+    },
+    {
+      title: "Do czego wykorzystywana jest metoda `hasOwnProperty`?",
+      hints: [],
+      answers: [
+        "do sprawdzania typu zmiennej",
+        "do sprawdzania czy zmienna istnieje",
+        "do sprawdzania czy właściwość istnieje",
+        "do sprawdzania czy dana właściwość należy do oryginalnego obiektu, a nie do jego prototypu"
+      ],
+      correctAnswerIndex: 3
+    },
+    {
+      title: "Jaka jest różnica między `.call` i `.apply`?",
+      hints: [],
+      answers: [
+        "nie ma",
+        "pierwsza oczekuje listy parametrów, którą przekaże funkcji na której zostanie uruchomiona, druga tablicy parametrów",
+        "różnica w szybkości działania",
+        "pierwsza oczekuje tablicy parametrów, którą przekaże funkcji na której zostanie uruchomiona, druga listy parametrów"
+      ],
+      correctAnswerIndex: 1
+    },
+    {
+      title: "Jaki będzie wynik operacji: '1' + 2 + 3",
+      hints: [],
+      answers: [
+        "6",
+        "'123'",
+        "'6'",
+        "123"
+      ],
+      correctAnswerIndex: 1
+    },
+    {
+      title: "Co się stanie, gdy użyjemy zmiennej która nie istnieje?",
+      hints: [],
+      answers: [
+        "stworzy się z wartością `undefined`",
+        "zostanie rzucony błąd `ReferenceError`",
+        "nic",
+        "stworzy się z wartością `null`"
+      ],
+      correctAnswerIndex: 1
+    },
+    {
+      title: "Co zostanie wyświetlone w konsoli?\n" +
+      "    \n" +
+      "    ```javascript\n" +
+      "    var a = 5;\n" +
+      "    (function() {\n" +
+      "        var a = 10;\n" +
+      "    })();\n" +
+      "    console.log(a); // ???\n" +
+      "    ```\n",
+      hints: [],
+      answers: [
+        "10",
+        "0",
+        "5",
+        "15"
+      ],
+      correctAnswerIndex: 2
+    },
   ]
 };
