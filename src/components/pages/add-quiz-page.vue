@@ -90,7 +90,6 @@
                     type="text"
                     v-model="newCategory"
                     placeholder="Category name"
-                    @keyup.enter="saveCategory()"
                   />
                 </p>
               </div>
@@ -334,11 +333,28 @@
                   </p>
 
                   <br/>
+                </div>
+              </div>
+            </div>
 
-                  <button class="button is-success" @click="saveAnswer()">
-                    <i class="fa fa-floppy-o" aria-hidden="true"></i>
-                    &nbsp;Save answer
-                  </button>
+
+            <div class="field is-horizontal">
+              <div class="field-label">
+                <!-- Left empty for spacing -->
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control">
+                    <button class="button is-success" @click="saveAnswer()">
+                      <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                      &nbsp;Save answer
+                    </button>
+
+                    <button class="button is-danger" @click="undoAddAnswer()">
+                      <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                      &nbsp;Undo
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -397,6 +413,10 @@
   const imjv = require('is-my-json-valid');
   const validateQuiz = imjv(QUIZ_SCHEME, FORMATS);
 
+  const console = {
+    log: require('debug')('milva:add-quiz-page:log')
+  };
+
   marked.setOptions({
     highlight: function (code) {
       return require('highlight.js').highlightAuto(code).value;
@@ -443,22 +463,27 @@
     },
     methods: {
       addCategory() {
+        console.log('addCategory');
         this.isTryAddNewCategory = true;
       },
       undoAddCategory() {
+        console.log('undoAddCategory');
         this.isTryAddNewCategory = false;
         this.newCategory = null;
       },
       saveCategory() {
+        console.log('saveCategory');
         importer.addCategory(this.newCategory);
         this.categories = importer.categories;
         this.undoAddCategory();
       },
 
       addAuthor() {
+        console.log('addAuthor');
         this.isTryAddNewAuthor = true;
       },
       undoAddAuthor() {
+        console.log('undoAddAuthor');
         this.isTryAddNewAuthor = false;
         this.newAuthor = {
           name: null,
@@ -467,18 +492,30 @@
         };
       },
       saveAuthor() {
+        console.log('saveAuthor');
         importer.addAuthor(this.newAuthor);
         this.authors = importer.authors;
         this.undoAddAuthor();
       },
 
       addQuestion() {
+        console.log('addQuestion');
         this.isTryAddNewQuestion = true;
       },
       undoAddQuestion() {
+        console.log('undoAddQuestion');
         this.isTryAddNewQuestion = false;
       },
       saveQuestion() {
+        console.log('saveQuestion');
+
+        if (!this.newQuestionTitle) {
+          this.errors = [{ field: 'category title', message: 'is empty' }];
+          return;
+        }
+
+        this.errors = [];
+
         const question = {
           title: marked(this.newQuestionTitle),
           answers: this.answers.slice(),
@@ -495,6 +532,7 @@
         this.answers.length = 0;
       },
       removeQuestion(question) {
+        console.log('removeQuestion');
         const index = this.questions
           .map(q => q.title)
           .indexOf(question.title);
@@ -502,12 +540,23 @@
       },
 
       addAnswer() {
+        console.log('addAnswer');
         this.isTryAddNewAnswer = true;
       },
       undoAddAnswer() {
+        console.log('undoAddAnswer');
         this.isTryAddNewAnswer = false;
       },
       saveAnswer() {
+        console.log('saveAnswer');
+
+        if (!this.newAnswer) {
+          this.errors = [{ field: 'answer', message: 'is empty' }];
+          return;
+        }
+
+        this.errors = [];
+
         if (!this.answers.includes(this.newAnswer)) {
           this.answers.push(this.newAnswer);
         }
@@ -516,11 +565,13 @@
         this.newAnswer = null;
       },
       removeAnswer(answer) {
+        console.log('removeAnswer');
         const index = this.answers.indexOf(answer);
         this.answers.splice(index, 1);
       },
 
       submit() {
+        console.log('submit');
         const authorModel = this.authors.find((author) => {
           return author.name === this.quiz.author.name;
         });
@@ -528,9 +579,6 @@
         if (authorModel) {
           this.quiz.author = authorModel.toJSON();
         }
-
-        console.log({ authorModel });
-        console.log({ a: this.newAuthor });
 
         this.quiz.questions = this.questions.slice();
 
@@ -541,11 +589,14 @@
           return;
         }
 
+        this.errors = [];
+
         importer.addQuiz(this.quiz);
         router.push({ path: '/' });
       },
 
       cancel() {
+        console.log('cancel');
         router.back();
       }
     }
