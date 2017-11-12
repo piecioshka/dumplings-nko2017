@@ -2,7 +2,7 @@
 
 > Milva - Take a break. Take a quiz!
 
-![](./static/images/images-huge/banner-600x200.jpg)
+![](./static/images/promo/banner-600x200.jpg)
 
 ## Build Setup
 
