@@ -10,14 +10,14 @@ export default {
   questions: [
     {
       title: "Jaki będzie wynik wyrażenia:\n" +
-      "    ```javascript\n" +
-      "    for (var i = 0; i < 5; i++) {\n" +
-      "        if (i === 0) {\n" +
-      "            setTimeout(function () {\n" +
-      "                console.log(i); // ???\n" +
-      "            }, 1000);\n" +
-      "        }\n" +
+      "```javascript\n" +
+      "for (var i = 0; i < 5; i++) {\n" +
+      "    if (i === 0) {\n" +
+      "        setTimeout(function () {\n" +
+      "            console.log(i); // ???\n" +
+      "        }, 1000);\n" +
       "    }\n" +
+      "}\n" +
       "    ```\n",
       hints: [],
       answers: [
@@ -84,14 +84,13 @@ export default {
     },
     {
       title: "Co zostanie wyświetlone w konsoli?\n" +
-      "    \n" +
-      "    ```javascript\n" +
-      "    var a = 5;\n" +
-      "    (function() {\n" +
-      "        var a = 10;\n" +
-      "    })();\n" +
-      "    console.log(a); // ???\n" +
-      "    ```\n",
+      "```js\n" +
+      "var a = 5;\n" +
+      "(function() {\n" +
+      "    var a = 10;\n" +
+      "})();\n" +
+      "console.log(a); // ???\n" +
+      "```\n",
       hints: [],
       answers: [
         "10",

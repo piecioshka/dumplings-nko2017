@@ -34,6 +34,9 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 ## TODO List
 
 * [x] Create HomePage (v1)
+  * [x] Defined some files with mocks quiz questions and answers
+  * [x] Convert questions from Markdown to HTML
+  * [x] Highlight code
   * [x] Filter list of quizzes after select category
   * [x] Menu with categories
     * [x] Display unique list of categories (with "all" option)
@@ -56,6 +59,10 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
   * [x] Add button from HomePage
   * [x] Create new route for page
   * [x] Create form
+* [ ] Time
+  * [ ] Setup time limit in configuration
+  * [ ] Display time on question
+  * [ ] Redirect to next question when time is end
 * [ ] Hints
   * [ ] Display question hints (step by step) when they defined
   * [ ] Add to AddQuizPage field where user can defined hints

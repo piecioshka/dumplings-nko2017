@@ -30,9 +30,7 @@
           </div>
 
           <div class="message-body">
-            <h2 class="subtitle">
-              {{ currentQuestion.title }}
-            </h2>
+            <p class="subtitle" v-html="currentQuestion.title"></p>
 
             <AnswersList
               :question="currentQuestion"
