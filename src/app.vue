@@ -8,6 +8,8 @@
       </section>
     </header>
 
+    <UserPanel></UserPanel>
+
     <section id="content" class="section">
       <router-view/>
     </section>
@@ -25,8 +27,13 @@
 </template>
 
 <script>
+  import UserPanel from './components/shared/user-panel.vue';
+
   export default {
-    name: 'App'
+    name: 'App',
+    components: {
+      UserPanel
+    }
   }
 </script>
 

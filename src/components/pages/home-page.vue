@@ -21,7 +21,7 @@
 <script>
   import CategoryList from '../shared/category-list.vue';
   import QuizList from '../shared/quiz-list.vue';
-  import importer from '../../helper/importer';
+  import importer from '../../services/importer';
 
   export default {
     name: 'HomePage',

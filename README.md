@@ -59,6 +59,19 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
   * [x] Add button from HomePage
   * [x] Create new route for page
   * [x] Create form
+* [ ] User
+  * [x] User panel
+    * [x] Sign in user with:
+      * [x] Regular form component
+      * [x] ~~SSO with Facebook / Twitter / GitHub~~
+    * [x] Sign out user
+    * [x] Save state of logging to storage
+  * [ ] User profile 
+    * [ ] Collect score from quizzes and store them
+    * [ ] Display ranking of quizzes result
+* [ ] WebSocket
+  * [ ] Display ranking of current logged users
+  * [ ] Display ranking of all registered users
 * [ ] Time
   * [ ] Setup time limit in configuration
   * [ ] Display time on question
@@ -66,11 +79,3 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 * [ ] Hints
   * [ ] Display question hints (step by step) when they defined
   * [ ] Add to AddQuizPage field where user can defined hints
-* [ ] User
-  * [ ] Sign in user with:
-    * [ ] Native `prompt`
-    * [ ] SSO with Facebook / Twitter / GitHub
-  * [ ] Create user panel with number of collected scores
-* [ ] WebSocket
-  * [ ] Display ranking of current logged users
-  * [ ] Display ranking of all registered users

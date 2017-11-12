@@ -404,8 +404,7 @@
 </template>
 
 <script>
-  import importer from '../../helper/importer';
-  import router from '../../router/index';
+  import importer from '../../services/importer';
   import QUIZ_SCHEME from '../../schemas/quiz';
   import FORMATS from '../../schemas/formats';
   import marked from 'marked';
@@ -592,12 +591,12 @@
         this.errors = [];
 
         importer.addQuiz(this.quiz);
-        router.push({ path: '/' });
+        this.$router.push({ path: '/' });
       },
 
       cancel() {
         console.log('cancel');
-        router.back();
+        this.$router.back();
       }
     }
   }

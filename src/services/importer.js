@@ -1,4 +1,4 @@
-import {uniqueElements} from './array-helper';
+import {uniqueElements} from '../helper/array-helper';
 import {QuizModel} from '../models/quiz.model';
 import {CategoryModel} from '../models/category.model';
 import {AuthorModel} from '../models/author.model';

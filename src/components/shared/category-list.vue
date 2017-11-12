@@ -20,7 +20,7 @@
 <script>
   import {QuizModel} from '../../models/quiz.model';
   import {CategoryModel} from '../../models/category.model';
-  import importer from '../../helper/importer';
+  import importer from '../../services/importer';
 
   export default {
     name: 'CategoryList',

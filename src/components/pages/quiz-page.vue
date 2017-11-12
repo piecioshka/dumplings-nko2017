@@ -89,8 +89,7 @@
 </template>
 
 <script>
-  import importer from '../../helper/importer';
-  import router from '../../router/index';
+  import importer from '../../services/importer';
   import AnswersList from '../../components/shared/answers-list.vue';
 
   export default {
@@ -102,11 +101,13 @@
       return {
         quiz: this.getQuizById(),
         currentQuestionIndex: 0,
-        get currentQuestion() {
-          return this.quiz.questions[this.currentQuestionIndex];
-        },
         isQuizCompleted: false
       }
+    },
+    computed: {
+      currentQuestion() {
+        return this.quiz.questions[this.currentQuestionIndex];
+      },
     },
     methods: {
       getQuizById() {
@@ -117,7 +118,7 @@
         });
 
         if (!quiz) {
-          router.push({ path: '/' });
+          this.$router.push({ path: '/' });
           return;
         }
 
