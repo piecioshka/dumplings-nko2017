@@ -8,11 +8,16 @@ import {AuthorModel} from '../models/author.model';
 import {CategoryModel} from '../models/category.model';
 import {QuestionModel} from '../models/question.model';
 import {AnswerModel} from '../models/answer.model';
+import USER_SCHEME from '../schemas/user';
+import {UserModel} from '../models/user.model';
+
+const imjv = require('is-my-json-valid');
 
 Vue.use(Vuex);
 
 const console = {
-  log: require('debug')('milva:store:log')
+  log: require('debug')('milva:store:log'),
+  error: require('debug')('milva:store:error')
 };
 
 const LOCAL_QUIZZES = [
@@ -77,18 +82,39 @@ function createQuizModel(state, q) {
   return new QuizModel(q);
 }
 
+function loadUser() {
+  const user = StorageService.get('user');
+  const validate = imjv(USER_SCHEME);
+
+  if (!validate(user)) {
+    console.error(validate.errors);
+    StorageService.remove('user');
+    return null;
+  }
+
+  return new UserModel(user);
+}
+
+function createUser(username) {
+  return new UserModel({ name: username });
+}
+
+function saveUser(userModel) {
+  StorageService.save('user', userModel);
+}
+
 export default new Vuex.Store({
   state: {
-    user: StorageService.get('user'),
+    user: null,
     quizzes: [],
     quizzesToDisplay: [],
     categories: [],
     authors: []
   },
   actions: {
-    loadLocalQuizzes({ commit }) {
-      console.log('actions: loadLocalQuizzes');
-      commit('loadLocalQuizzes', LOCAL_QUIZZES);
+    setupStore({ commit }) {
+      console.log('actions: setupStore');
+      commit('setupStore', LOCAL_QUIZZES);
     },
 
     updateQuizzesToDisplay({ commit }, quizzesToDisplay) {
@@ -96,14 +122,12 @@ export default new Vuex.Store({
       commit('updateQuizzesToDisplay', quizzesToDisplay);
     },
 
-    login({ commit }, user) {
-      console.log('actions: login', user);
-      StorageService.save('user', user);
-      commit('login');
+    login({ commit }, username) {
+      console.log('actions: login', username);
+      commit('login', username);
     },
     logout({ commit }) {
       console.log('actions: logout');
-      StorageService.remove('user');
       commit('logout');
     },
 
@@ -118,12 +142,18 @@ export default new Vuex.Store({
     addCategory({ commit }, categoryName) {
       console.log('actions: addCategory', categoryName);
       commit('addCategory', categoryName);
+    },
+
+    completeQuiz({ commit }, resolvedQuiz) {
+      console.log('actions: completeQuiz', resolvedQuiz);
+      commit('completeQuiz', resolvedQuiz);
     }
   },
   mutations: {
-    loadLocalQuizzes(state, quizzes) {
-      console.log('mutations: loadLocalQuizzes');
+    setupStore(state, quizzes) {
+      console.log('mutations: setupStore');
 
+      state.user = loadUser();
       state.quizzes = quizzes.map((quiz) => {
         return createQuizModel(state, quiz);
       });
@@ -136,12 +166,14 @@ export default new Vuex.Store({
       console.log('mutations: updateQuizzesToDisplay');
       state.quizzesToDisplay = quizzesToDisplay;
     },
-    login(state) {
+    login(state, username) {
       console.log('mutations: login');
-      state.user = StorageService.get('user');
+      state.user = createUser(username);
+      saveUser(state.user);
     },
     logout(state) {
       console.log('mutations: logout');
+      StorageService.remove('user');
       state.user = null;
     },
 
@@ -156,6 +188,14 @@ export default new Vuex.Store({
     addCategory(state, categoryName) {
       console.log('mutations: addCategory');
       appendCategoryList(state, categoryName)
+    },
+
+    completeQuiz(state, resolvedQuiz) {
+      console.log('mutations: completeQuiz');
+      if (state.user) {
+        state.user.addResolvedQuiz(resolvedQuiz);
+        saveUser(state.user);
+      }
     }
   },
   getters: {

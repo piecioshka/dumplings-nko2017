@@ -41,8 +41,6 @@ const router = new Router({
   ]
 });
 
-console.log('router', router);
-
 router.beforeEach((to, from, next) => {
   console.log(to.path);
   next();

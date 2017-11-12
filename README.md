@@ -61,16 +61,16 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
   * [x] Add button from HomePage
   * [x] Create new route for page
   * [x] Create form
-* [ ] User
+* [x] User (v3)
   * [x] User panel
     * [x] Sign in user with:
       * [x] Regular form component
       * [x] ~~SSO with Facebook / Twitter / GitHub~~
     * [x] Sign out user
     * [x] Save state of logging to storage
-  * [ ] User profile 
-    * [ ] Collect score from quizzes and store them
-    * [ ] Display ranking of quizzes result
+  * [x] User profile 
+    * [x] Collect score from quizzes and store them
+    * [x] Display ranking of quizzes result
 * [ ] WebSocket
   * [ ] Display ranking of current logged users
   * [ ] Display ranking of all registered users

@@ -130,6 +130,11 @@
           this.currentQuestionIndex++;
         } else {
           this.isQuizCompleted = true;
+          this.$store.dispatch('completeQuiz', {
+            id: this.quiz.id,
+            name: this.quiz.name,
+            score: this.getScorePercent()
+          })
         }
       },
       getScore() {

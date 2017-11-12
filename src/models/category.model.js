@@ -1,7 +1,5 @@
 import uuid from '../helper/uuid';
 
-const categories = {};
-
 export class CategoryModel {
 
   constructor(name) {

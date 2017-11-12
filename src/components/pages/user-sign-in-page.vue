@@ -45,7 +45,7 @@
     },
     methods: {
       login() {
-        this.$store.dispatch('login', { name: this.username })
+        this.$store.dispatch('login', this.username)
           .then(() => {
             this.$router.push({ path: '/profile' });
           });

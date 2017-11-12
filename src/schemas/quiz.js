@@ -4,19 +4,16 @@ export default {
   additionalProperties: false,
   properties: {
     name: {
-      require: true,
-      type: 'string',
-      format: 'not-empty'
+      required: true,
+      type: 'string'
     },
     categoryName: {
-      require: true,
-      type: 'string',
-      format: 'not-empty'
+      required: true,
+      type: 'string'
     },
     promo: {
-      require: true,
-      type: 'string',
-      format: 'not-empty'
+      required: true,
+      type: 'string'
     },
     author: {
       required: true,
@@ -25,8 +22,7 @@ export default {
       properties: {
         name: {
           required: true,
-          type: 'string',
-          format: 'not-empty'
+          type: 'string'
         },
         email: {
           required: true,
@@ -35,8 +31,7 @@ export default {
         },
         url: {
           required: true,
-          type: 'string',
-          format: 'not-empty'
+          type: 'string'
         }
       }
     },
@@ -48,23 +43,20 @@ export default {
         properties: {
           title: {
             required: true,
-            type: 'string',
-            format: 'not-empty'
+            type: 'string'
           },
           hints: {
             required: true,
             type: 'array',
             items: {
-              type: 'string',
-              format: 'not-empty'
+              type: 'string'
             }
           },
           answers: {
             required: true,
             type: 'array',
             items: {
-              type: 'string',
-              format: 'not-empty'
+              type: 'string'
             }
           },
           correctAnswerIndex: {

@@ -410,7 +410,6 @@
 
 <script>
   import QUIZ_SCHEME from '../../schemas/quiz';
-  import FORMATS from '../../schemas/formats';
   import marked from 'marked';
 
   marked.setOptions({
@@ -420,7 +419,7 @@
   });
 
   const imjv = require('is-my-json-valid');
-  const validateQuiz = imjv(QUIZ_SCHEME, FORMATS);
+  const validateQuiz = imjv(QUIZ_SCHEME);
 
   const console = {
     log: require('debug')('milva:add-quiz-page:log')

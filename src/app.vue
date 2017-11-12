@@ -35,7 +35,7 @@
       UserPanel
     },
     mounted() {
-      this.$store.dispatch('loadLocalQuizzes');
+      this.$store.dispatch('setupStore');
     }
   }
 </script>
