@@ -2,6 +2,8 @@
 
 > A Vue.js project
 
+![](./static/images/images-huge/banner-600x200.jpg)
+
 ## Build Setup
 
 ``` bash
@@ -16,6 +18,15 @@ npm run build
 
 # build for production and view the bundle analyzer report
 npm run build --report
+
+# count LOC in src/ directory
+npm run count
+
+# start express server to serve dist/
+npm run start
+
+# build dist/ directory (and commit) and upload on Heroku & GitHub 
+npm run deploy
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
