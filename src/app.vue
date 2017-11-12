@@ -3,7 +3,7 @@
     <header class="hero is-light">
       <section class="hero-body has-text-centered">
         <router-link to="/">
-          <img src="/static/images/images-huge/banner-600x200.jpg" alt=""/>
+          <img src="/static/images/promo/banner-600x200.jpg" alt=""/>
         </router-link>
       </section>
     </header>
