@@ -1,7 +1,7 @@
 export default {
   name: 'JavaScript - level 2',
   category: 'JavaScript',
-  promo: 'http://localhost:8080/static/images/quiz-banners/logo-javascript.png',
+  promo: '/static/images/quiz-banners/logo-javascript.png',
   author: {
     name: 'Piotr Kowalski',
     email: 'piecioshka@gmail.com',

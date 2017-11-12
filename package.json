@@ -6,11 +6,12 @@
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
-    "start": "npm run dev",
+    "start": "node server.js",
     "build": "node build/build.js",
     "count": "find src -name '*.js' -not -path 'src/quizzes/*' -or -name '*.scss' -or -name '*.vue' | xargs wc -l | sort -r"
   },
   "dependencies": {
+    "express": "^4.16.2",
     "is-my-json-valid": "^2.16.1",
     "node-sass": "^4.6.0",
     "sass-loader": "^6.0.6",

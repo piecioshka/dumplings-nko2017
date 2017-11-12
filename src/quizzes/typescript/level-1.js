@@ -1,7 +1,7 @@
 export default {
   name: 'TypeScript - level 1',
   category: 'TypeScript',
-  promo: 'http://localhost:8080/static/images/quiz-banners/logo-typescript.png',
+  promo: '/static/images/quiz-banners/logo-typescript.png',
   author: {
     name: 'Piotr Kowalski',
     email: 'piecioshka@gmail.com',
