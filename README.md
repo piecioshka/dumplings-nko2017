@@ -1,6 +1,6 @@
 # milva
 
-> A Vue.js project
+> Milva - Take a break. Take a quiz!
 
 ![](./static/images/images-huge/banner-600x200.jpg)
 

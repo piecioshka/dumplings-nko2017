@@ -1,7 +1,7 @@
 {
   "name": "milva",
   "version": "3.0.0",
-  "description": "A Vue.js project",
+  "description": "Milva - Take a break. Take a quiz!",
   "author": "Piotr Kowalski <piecioshka@gmail.com>",
   "private": true,
   "scripts": {
