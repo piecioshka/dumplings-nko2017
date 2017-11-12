@@ -43,6 +43,15 @@
         <i class="fa fa-facebook-square" aria-hidden="true"></i>
         &nbsp;Share
       </a>
+
+      <router-link
+        :to="'/quiz/' + quiz.id + '/ranking'"
+        class="card-footer-item"
+      >
+        <i class="fa fa-bars" aria-hidden="true"></i>
+        &nbsp;Ranking
+      </router-link>
+
       <router-link
         :to="'/quiz/' + quiz.id"
         class="card-footer-item has-text-danger"

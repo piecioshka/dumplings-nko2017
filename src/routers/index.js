@@ -2,9 +2,11 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import HomePage from '@/components/pages/home-page';
 import QuizPage from '@/components/pages/quiz-page';
+import QuizRankingPage from '@/components/pages/quiz-ranking-page';
 import NewQuizPage from '@/components/pages/add-quiz-page';
 import UserSignInPage from '@/components/pages/user-sign-in-page';
 import UserProfilePage from '@/components/pages/user-profile-page';
+import CurrentlyLoggedUsersPage from '@/components/pages/currently-logged-users-page';
 
 Vue.use(Router);
 
@@ -27,6 +29,10 @@ const router = new Router({
       component: QuizPage
     },
     {
+      path: '/quiz/:quizId/ranking',
+      component: QuizRankingPage
+    },
+    {
       path: '/new-quiz',
       component: NewQuizPage
     },
@@ -37,6 +43,10 @@ const router = new Router({
     {
       path: '/profile',
       component: UserProfilePage
+    },
+    {
+      path: '/currently-logged-users',
+      component: CurrentlyLoggedUsersPage
     }
   ]
 });

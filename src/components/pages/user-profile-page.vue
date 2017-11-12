@@ -12,7 +12,9 @@
           <thead>
           <tr>
             <td>Quiz name</td>
-            <td>Score</td>
+            <td>
+              Score <i class="fa fa-arrow-down" aria-hidden="true"></i>
+            </td>
           </tr>
           </thead>
           <tbody>
@@ -29,11 +31,19 @@
           </tbody>
         </table>
 
-        <div class="message" v-else="user.resolvedQuizzes.length">
+        <div v-else="user.resolvedQuizzes.length">
+          <div class="message"
           <p class="message-body">
             User was not resolved quizzes.
           </p>
+
+          <br/>
         </div>
+
+        <router-link to="/" class="button is-dark is-outlined">
+          <i class="fa fa-undo" aria-hidden="true"></i>
+          &nbsp;Go to quizzes
+        </router-link>
       </div>
       <div class="column"></div>
     </div>

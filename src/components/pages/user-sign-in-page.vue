@@ -51,6 +51,11 @@
           });
       }
     },
+    sockets: {
+      generalChannel(users) {
+        this.$store.dispatch('updateCurrentlyLoggedUsers', users);
+      }
+    },
     mounted() {
       if (this.$store.getters.user) {
         this.$router.push({ path: '/profile' });

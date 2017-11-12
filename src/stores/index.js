@@ -26,6 +26,7 @@ const LOCAL_QUIZZES = [
   require('../quizzes/typescript/level-1').default,
   require('../quizzes/typescript/level-2').default,
   require('../quizzes/typescript/level-3').default,
+  require('../quizzes/photoshop/level-1').default,
 ];
 
 function authorIdentity(author) {
@@ -92,6 +93,8 @@ function loadUser() {
     return null;
   }
 
+  console.log('[+] restore UserModel from storage');
+
   return new UserModel(user);
 }
 
@@ -109,7 +112,10 @@ export default new Vuex.Store({
     quizzes: [],
     quizzesToDisplay: [],
     categories: [],
-    authors: []
+    authors: [],
+
+    isConnected: false,
+    currentlyLoggerUsers: []
   },
   actions: {
     setupStore({ commit }) {
@@ -147,6 +153,11 @@ export default new Vuex.Store({
     completeQuiz({ commit }, resolvedQuiz) {
       console.log('actions: completeQuiz', resolvedQuiz);
       commit('completeQuiz', resolvedQuiz);
+    },
+
+    updateCurrentlyLoggedUsers({ commit }, users) {
+      console.log('actions: updateCurrentlyLoggedUsers', users);
+      commit('SOCKET_generalChannel', users);
     }
   },
   mutations: {
@@ -168,6 +179,7 @@ export default new Vuex.Store({
     },
     login(state, username) {
       console.log('mutations: login');
+      console.log('[+] create new UserModel by login');
       state.user = createUser(username);
       saveUser(state.user);
     },
@@ -196,12 +208,28 @@ export default new Vuex.Store({
         state.user.addResolvedQuiz(resolvedQuiz);
         saveUser(state.user);
       }
+    },
+
+    SOCKET_CONNECT(state) {
+      console.log('mutations: SOCKET_CONNECT');
+      state.isConnected = true;
+    },
+
+    SOCKET_DISCONNECT(state) {
+      console.log('mutations: SOCKET_DISCONNECT');
+      state.isConnected = false;
+    },
+
+    SOCKET_generalChannel(state, users) {
+      console.log('mutations: SOCKET_generalChannel');
+      state.currentlyLoggerUsers = users
     }
   },
   getters: {
     user(state) {
       return state.user;
     },
+
     quizzes(state) {
       return state.quizzes;
     },
@@ -213,6 +241,13 @@ export default new Vuex.Store({
     },
     authors(state) {
       return state.authors;
+    },
+
+    isConnected(state) {
+      return state.isConnected;
+    },
+    currentlyLoggerUsers(state) {
+      return state.currentlyLoggerUsers;
     }
   },
   modules: {}

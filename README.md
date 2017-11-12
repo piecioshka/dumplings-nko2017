@@ -72,8 +72,9 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
     * [x] Collect score from quizzes and store them
     * [x] Display ranking of quizzes result
 * [ ] WebSocket
-  * [ ] Display ranking of current logged users
-  * [ ] Display ranking of all registered users
+  * [x] Display current logged users
+  * [ ] Display ranking of single quiz by current logged users
+  * [ ] Display ranking of single quiz by all registered users
 * [ ] Time
   * [ ] Setup time limit in configuration
   * [ ] Display time on question

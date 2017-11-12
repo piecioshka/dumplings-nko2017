@@ -34,8 +34,24 @@
     components: {
       UserPanel
     },
+    computed: {
+      user() {
+        return this.$store.getters.user;
+      }
+    },
     mounted() {
       this.$store.dispatch('setupStore');
+    },
+    watch: {
+      user() {
+        if (this.user) {
+          this.$socket.emit('generalChannel', {
+            action: 'add',
+            data: this.user,
+            from: 'app.vue'
+          });
+        }
+      }
     }
   }
 </script>

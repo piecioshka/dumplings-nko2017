@@ -80,6 +80,14 @@
                 <i class="fa fa-undo" aria-hidden="true"></i>
                 &nbsp;Back to quizzes
               </router-link>
+
+              <router-link
+                :to="'/quiz/' + quiz.id + '/ranking'"
+                class="button is-dark"
+              >
+                <i class="fa fa-bars" aria-hidden="true"></i>
+                &nbsp;Ranking
+              </router-link>
             </div>
           </div>
         </article>
@@ -90,6 +98,7 @@
 
 <script>
   import AnswersList from '../../components/shared/answers-list.vue';
+  import {getQuizById} from '../../helper/quiz-helper';
 
   export default {
     name: 'QuizPage',
@@ -98,7 +107,7 @@
     },
     data() {
       return {
-        quiz: this.getQuizById(),
+        quiz: getQuizById(this),
         currentQuestionIndex: 0,
         isQuizCompleted: false
       }
@@ -109,20 +118,6 @@
       },
     },
     methods: {
-      getQuizById() {
-        const selectedQuiz = this.$route.params.quizId;
-
-        const quiz = this.$store.getters.quizzes.find((quiz) => {
-          return quiz.id === selectedQuiz;
-        });
-
-        if (!quiz) {
-          this.$router.push({ path: '/' });
-          return;
-        }
-
-        return quiz;
-      },
       switchQuestion(userAnswer) {
         this.currentQuestion.userAnswerId = userAnswer.id;
 
@@ -134,7 +129,7 @@
             id: this.quiz.id,
             name: this.quiz.name,
             score: this.getScorePercent()
-          })
+          });
         }
       },
       getScore() {
@@ -176,7 +171,7 @@
     },
     watch: {
       '$route'(to, from) {
-        this.quiz = this.getQuizById();
+        this.quiz = getQuizById(this);
       }
     }
   }

@@ -2,10 +2,27 @@
   <div id="user-panel">
     <div class="tabs is-centered is-toggle">
       <ul>
-        <router-link to="/" tag="li" active-class="is-active" exact>
+        <router-link
+          exact
+          to="/"
+          tag="li"
+          active-class="is-active"
+        >
           <a>
             <i class="fa fa-home" aria-hidden="true"></i>
             &nbsp;Home
+          </a>
+        </router-link>
+
+        <router-link
+          exact
+          to="/currently-logged-users"
+          tag="li"
+          active-class="is-active"
+        >
+          <a>
+            <i class="fa fa-users" aria-hidden="true"></i>
+            &nbsp;Currently logged users
           </a>
         </router-link>
 
@@ -59,8 +76,16 @@
     },
     methods: {
       logout() {
+        const user = this.user;
+
         this.$store.dispatch('logout')
           .then(() => {
+            this.$socket.emit('generalChannel', {
+              action: 'remove',
+              data: user,
+              from: 'user-panel.vue'
+            });
+
             this.$router.push({ path: '/' });
           });
       }
