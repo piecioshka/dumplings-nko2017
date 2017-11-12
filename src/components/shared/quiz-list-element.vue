@@ -21,7 +21,15 @@
       <div class="content level">
         <div class="tags has-addons level-left">
           <span class="tag">Category</span>
-          <span class="tag is-info">{{ quiz.category.name }}</span>
+          <span class="tag is-info">
+            <router-link
+              exact
+              v-bind:to="'/category/' + quiz.category.id"
+              class="has-text-light"
+            >
+              {{ quiz.category.name }}
+            </router-link>
+          </span>
         </div>
       </div>
     </div>

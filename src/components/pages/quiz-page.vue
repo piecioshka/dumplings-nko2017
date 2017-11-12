@@ -6,7 +6,15 @@
 
         <div class="tags has-addons level-left">
           <span class="tag">Category</span>
-          <span class="tag is-info">{{ quiz.category.name }}</span>
+          <span class="tag is-info">
+            <router-link
+              exact
+              v-bind:to="'/category/' + quiz.category.id"
+              class="has-text-light"
+            >
+              {{ quiz.category.name }}
+            </router-link>
+          </span>
         </div>
 
         <img v-bind:src="quiz.promo" alt=""/>
@@ -60,19 +68,21 @@
               </h2>
             </div>
 
-            <a
-              :href="buildTwitterShareUrl()"
-              :class="'button ' + getCompleteStatus()"
-              target="_blank"
-            >
-              <i class="fa fa-twitter-square" aria-hidden="true"></i>
-              &nbsp;Share my score
-            </a>
+            <div class="buttons">
+              <a
+                :href="buildTwitterShareUrl()"
+                :class="'button ' + getCompleteStatus()"
+                target="_blank"
+              >
+                <i class="fa fa-twitter-square" aria-hidden="true"></i>
+                &nbsp;Share my score
+              </a>
 
-            <router-link to="/" class="button is-dark is-outlined">
-              <i class="fa fa-undo" aria-hidden="true"></i>
-              &nbsp;Back to quizzes
-            </router-link>
+              <router-link to="/" class="button is-dark is-outlined">
+                <i class="fa fa-undo" aria-hidden="true"></i>
+                &nbsp;Back to quizzes
+              </router-link>
+            </div>
           </div>
         </article>
       </div>
