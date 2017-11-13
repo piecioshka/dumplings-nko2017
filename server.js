@@ -67,7 +67,7 @@ io.on('connection', function (socket) {
   });
 });
 
-const port = process.env.PORT || 5000;
+const port = process.env.NODE_PORT || 5000;
 http.listen(port);
 
 console.log('Server started ' + port);
