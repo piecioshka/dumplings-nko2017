@@ -10,7 +10,7 @@ import store from './stores/index';
 
 Vue.config.productionTip = false;
 
-const SocketInstance = SocketIO('http://localhost:' + 5000);
+const SocketInstance = SocketIO('http://' + location.hostname + ':' + 5000);
 Vue.use(VueSocketIO, SocketInstance, store);
 
 /* eslint-disable no-new */
