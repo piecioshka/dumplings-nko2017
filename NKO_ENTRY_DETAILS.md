@@ -30,14 +30,14 @@ After that, you can see your quiz scores on`/profile` page.
 
 ## Instructions
 
-Tested under:
+### Tested under
 
 - Google Chrome
 - Mozilla Firefox
 
-...and works perfect.
+...and works perfect 💛
 
-My plans:
+### My plans
 
 - Share quizzes due to all connected clients
 - Display ranking of single quiz by current logged users
@@ -46,7 +46,7 @@ My plans:
 - Display time on question
 - Redirect to next question when time is end
 - Display question hints (step by step) when they defined
-- Add to AddQuizPage field where user can defined hints
+- Add to form on AddQuizPage field where user can defined hints
 
 ## Screencast / YouTube URL
 
@@ -65,6 +65,7 @@ I was used:
 - **slug** - to normalize some string (categories)
 - **socket.io** - ehh... I've fuckup to start this on Heroku...
 - **nodemon** - to restart server when I edit it sources
+- **Bulma** - to make awesome layout 💈
 
 My workspace:
 
