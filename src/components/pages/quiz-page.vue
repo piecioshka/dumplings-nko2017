@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="columns">
-      <div class="column">
+      <div class="column" v-if="quiz">
         <h1 class="title">{{ quiz.name }}</h1>
 
         <div class="tags has-addons level-left">

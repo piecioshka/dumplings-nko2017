@@ -29,9 +29,9 @@
     components: {
       QuizListElement
     },
-    props: [
-      'quizzes'
-    ]
+    props: {
+      quizzes: Array
+    }
   }
 </script>
 

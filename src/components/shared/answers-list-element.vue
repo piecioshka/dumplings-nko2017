@@ -22,9 +22,9 @@
 
   export default {
     name: 'AnswersListElement',
-    props: [
-      'answer'
-    ],
+    props: {
+      answer: Object
+    },
     methods: {
       getAnswerContent() {
         return marked(this.answer.content)

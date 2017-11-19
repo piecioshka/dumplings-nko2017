@@ -23,9 +23,9 @@
 
   export default {
     name: 'CategoryList',
-    props: [
-      'categories'
-    ]
+    props: {
+      categories: Array
+    }
   }
 </script>
 

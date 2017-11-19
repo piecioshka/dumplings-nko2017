@@ -68,9 +68,9 @@
 
   export default {
     name: 'QuizListElement',
-    props: [
-      'quiz'
-    ],
+    props: {
+      quiz: Object
+    },
     methods: {
       buildFacebookShareUrl() {
         return 'https://www.facebook.com/sharer/sharer.php?u=' + location.href + '/quiz/' + this.quiz.id;

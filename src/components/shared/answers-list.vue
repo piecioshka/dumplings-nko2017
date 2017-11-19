@@ -1,7 +1,8 @@
 <template>
   <section>
     <ul>
-      <li v-for="answer in question.answers" :key="answer.id" @click="selectAnswer(answer)">
+      <li v-for="answer in question.answers" :key="answer.id"
+          @click="selectAnswer(answer)">
         <AnswersListElement :answer="answer"></AnswersListElement>
       </li>
     </ul>
@@ -13,9 +14,9 @@
 
   export default {
     name: 'AnswersList',
-    props: [
-      'question'
-    ],
+    props: {
+      question: Object
+    },
     components: {
       AnswersListElement
     },
