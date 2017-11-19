@@ -22,7 +22,7 @@
   import {CategoryModel} from '../../models/category.model';
 
   export default {
-    name: 'category-list',
+    name: 'CategoryList',
     props: {
       categories: Array
     }

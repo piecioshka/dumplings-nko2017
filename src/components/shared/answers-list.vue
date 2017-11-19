@@ -13,7 +13,7 @@
   import AnswersListElement from './answers-list-element.vue';
 
   export default {
-    name: 'answers-list',
+    name: 'AnswersList',
     props: {
       question: Object
     },

@@ -67,7 +67,7 @@
   import {CategoryModel} from '../../models/category.model';
 
   export default {
-    name: 'quiz-list-element',
+    name: 'QuizListElement',
     props: {
       quiz: Object
     },

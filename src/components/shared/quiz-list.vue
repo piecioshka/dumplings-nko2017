@@ -25,7 +25,7 @@
   import {CategoryModel} from '../../models/category.model';
 
   export default {
-    name: 'quiz-list',
+    name: 'QuizList',
     components: {
       QuizListElement
     },
