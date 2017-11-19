@@ -3,7 +3,7 @@
     <ul>
       <li v-for="answer in question.answers" :key="answer.id"
           @click="selectAnswer(answer)">
-        <AnswersListElement :answer="answer"></AnswersListElement>
+        <answers-list-element :answer="answer"></answers-list-element>
       </li>
     </ul>
   </section>
@@ -13,7 +13,7 @@
   import AnswersListElement from './answers-list-element.vue';
 
   export default {
-    name: 'AnswersList',
+    name: 'answers-list',
     props: {
       question: Object
     },

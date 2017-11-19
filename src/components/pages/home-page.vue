@@ -9,10 +9,10 @@
 
         <hr/>
 
-        <CategoryList :categories="categories"></CategoryList>
+        <category-list :categories="categories"></category-list>
       </nav>
       <main class="column">
-        <QuizList :quizzes="quizzesToDisplay"></QuizList>
+        <quiz-list :quizzes="quizzesToDisplay"></quiz-list>
       </main>
     </div>
   </div>

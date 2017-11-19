@@ -8,7 +8,7 @@
       </section>
     </header>
 
-    <UserPanel></UserPanel>
+    <user-panel></user-panel>
 
     <section id="content" class="section">
       <router-view/>

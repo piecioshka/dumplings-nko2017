@@ -21,7 +21,7 @@
   });
 
   export default {
-    name: 'AnswersListElement',
+    name: 'answers-list-element',
     props: {
       answer: Object
     },

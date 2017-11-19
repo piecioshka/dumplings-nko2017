@@ -68,7 +68,7 @@
 
 <script>
   export default {
-    name: 'UserPanel',
+    name: 'user-panel',
     computed: {
       user() {
         return this.$store.getters.user

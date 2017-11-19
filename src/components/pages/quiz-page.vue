@@ -32,10 +32,10 @@
           <div class="message-body">
             <p class="subtitle" v-html="currentQuestion.title"></p>
 
-            <AnswersList
+            <answers-list
               :question="currentQuestion"
               v-on:selectAnswer="switchQuestion"
-            ></AnswersList>
+            ></answers-list>
           </div>
         </article>
 

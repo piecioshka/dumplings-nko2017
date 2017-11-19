@@ -4,7 +4,7 @@
 
     <ul v-if="quizzes.length">
       <li v-for="quiz in quizzes" :key="quiz.id" class="is-inline-block">
-        <QuizListElement :quiz="quiz"></QuizListElement>
+        <quiz-list-element :quiz="quiz"></quiz-list-element>
       </li>
     </ul>
 
@@ -25,7 +25,7 @@
   import {CategoryModel} from '../../models/category.model';
 
   export default {
-    name: 'QuizList',
+    name: 'quiz-list',
     components: {
       QuizListElement
     },
