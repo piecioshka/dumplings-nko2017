@@ -59,14 +59,14 @@
           })
         }
 
-        this.$store.dispatch('updateQuizzesToDisplay', quizzesToDisplay);
+        this.$store.commit('updateQuizzesToDisplay', quizzesToDisplay);
       }
     },
     mounted() {
       const selectedCategoryId = this.$route.params.categoryId;
 
       if (typeof selectedCategoryId !== 'string') {
-        this.$store.dispatch('updateQuizzesToDisplay', this.$store.getters.quizzes);
+        this.$store.commit('updateQuizzesToDisplay', this.$store.getters.quizzes);
         return;
       }
 

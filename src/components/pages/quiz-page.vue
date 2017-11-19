@@ -125,7 +125,7 @@
           this.currentQuestionIndex++;
         } else {
           this.isQuizCompleted = true;
-          this.$store.dispatch('completeQuiz', {
+          this.$store.commit('completeQuiz', {
             id: this.quiz.id,
             name: this.quiz.name,
             score: this.getScorePercent()

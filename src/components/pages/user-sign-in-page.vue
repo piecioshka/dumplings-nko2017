@@ -45,15 +45,13 @@
     },
     methods: {
       login() {
-        this.$store.dispatch('login', this.username)
-          .then(() => {
-            this.$router.push({ path: '/profile' });
-          });
+        this.$store.commit('login', this.username);
+        this.$router.push({ path: '/profile' });
       }
     },
     sockets: {
       generalChannel(users) {
-        this.$store.dispatch('updateCurrentlyLoggedUsers', users);
+        this.$store.commit('updateCurrentlyLoggedUsers', users);
       }
     },
     mounted() {

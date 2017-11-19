@@ -121,43 +121,6 @@ export default new Vuex.Store({
     setupStore({ commit }) {
       console.log('actions: setupStore');
       commit('setupStore', LOCAL_QUIZZES);
-    },
-
-    updateQuizzesToDisplay({ commit }, quizzesToDisplay) {
-      console.log('actions: updateQuizzesToDisplay', quizzesToDisplay);
-      commit('updateQuizzesToDisplay', quizzesToDisplay);
-    },
-
-    login({ commit }, username) {
-      console.log('actions: login', username);
-      commit('login', username);
-    },
-    logout({ commit }) {
-      console.log('actions: logout');
-      commit('logout');
-    },
-
-    addQuiz({ commit }, quiz) {
-      console.log('actions: addQuiz', quiz);
-      commit('addQuiz', quiz);
-    },
-    addAuthor({ commit }, author) {
-      console.log('actions: addAuthor', author);
-      commit('addAuthor', author);
-    },
-    addCategory({ commit }, categoryName) {
-      console.log('actions: addCategory', categoryName);
-      commit('addCategory', categoryName);
-    },
-
-    completeQuiz({ commit }, resolvedQuiz) {
-      console.log('actions: completeQuiz', resolvedQuiz);
-      commit('completeQuiz', resolvedQuiz);
-    },
-
-    updateCurrentlyLoggedUsers({ commit }, users) {
-      console.log('actions: updateCurrentlyLoggedUsers', users);
-      commit('SOCKET_generalChannel', users);
     }
   },
   mutations: {
@@ -210,6 +173,11 @@ export default new Vuex.Store({
       }
     },
 
+    updateCurrentlyLoggedUsers(state, users) {
+      console.log('mutations: updateCurrentlyLoggedUsers');
+      state.currentlyLoggerUsers = users
+    },
+
     SOCKET_CONNECT(state) {
       console.log('mutations: SOCKET_CONNECT');
       state.isConnected = true;
@@ -218,11 +186,6 @@ export default new Vuex.Store({
     SOCKET_DISCONNECT(state) {
       console.log('mutations: SOCKET_DISCONNECT');
       state.isConnected = false;
-    },
-
-    SOCKET_generalChannel(state, users) {
-      console.log('mutations: SOCKET_generalChannel');
-      state.currentlyLoggerUsers = users
     }
   },
   getters: {

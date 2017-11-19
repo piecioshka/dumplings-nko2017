@@ -61,7 +61,7 @@
     },
     sockets: {
       generalChannel(users) {
-        this.$store.dispatch('updateCurrentlyLoggedUsers', users);
+        this.$store.commit('updateCurrentlyLoggedUsers', users);
       }
     },
     mounted() {

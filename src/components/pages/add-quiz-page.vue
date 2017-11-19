@@ -480,7 +480,7 @@
       },
       saveCategory() {
         console.log('saveCategory');
-        this.$store.dispatch('addCategory', this.newCategoryName);
+        this.$store.commit('addCategory', this.newCategoryName);
         this.undoAddCategory();
       },
 
@@ -499,7 +499,7 @@
       },
       saveAuthor() {
         console.log('saveAuthor');
-        this.$store.dispatch('addAuthor', this.newAuthor);
+        this.$store.commit('addAuthor', this.newAuthor);
         this.undoAddAuthor();
       },
 
@@ -600,7 +600,7 @@
 
         this.errors = [];
 
-        this.$store.dispatch('addQuiz', this.quiz);
+        this.$store.commit('addQuiz', this.quiz);
         this.$router.push({ path: '/' });
       },
 

@@ -78,16 +78,14 @@
       logout() {
         const user = this.user;
 
-        this.$store.dispatch('logout')
-          .then(() => {
-            this.$socket.emit('generalChannel', {
-              action: 'remove',
-              data: user,
-              from: 'user-panel.vue'
-            });
+        this.$store.commit('logout');
+        this.$socket.emit('generalChannel', {
+          action: 'remove',
+          data: user,
+          from: 'user-panel.vue'
+        });
 
-            this.$router.push({ path: '/' });
-          });
+        this.$router.push({ path: '/' });
       }
     }
   }
