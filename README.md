@@ -82,3 +82,7 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 * [ ] Hints
   * [ ] Display question hints (step by step) when they defined
   * [ ] Add to AddQuizPage field where user can defined hints
+
+## License
+
+[The MIT License](http://piecioshka.mit-license.org) @ 2026
