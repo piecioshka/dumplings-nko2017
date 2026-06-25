@@ -85,4 +85,4 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 
 ## License
 
-[The MIT License](http://piecioshka.mit-license.org) @ 2026
+[The MIT License](https://piecioshka.mit-license.org) @ 2026
